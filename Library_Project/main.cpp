@@ -33,7 +33,7 @@ void main_menu(Roles compare_roles){
 }
 
 // Create user accounts/new file
-void create_account(Account &_users){
+void create_account(Account &_users, const string& filepath){
     cin.ignore();
 
     string username;
@@ -52,11 +52,9 @@ void create_account(Account &_users){
          << "Enter option: ";
     cin >> role_choice;
 
-    const string filepath = "/Users/aaronher/CLionProjects/Github_Projects/my_cpp_projects/Library_Project//Accounts/Users/user_files/" + username;
-    ofstream new_account(filepath);
+    // const string filepath = "/Users/aaronher/CLionProjects/Github_Projects/my_cpp_projects/Library_Project//Accounts/Users/user_files/" + username;
+    ofstream new_account(filepath + username);
 
-    // new_account << "Username: " << username << endl;
-    // new_account << "Password: " << password << endl;
     // Encrypting passwords and usernames here
     new_account << "Username: " << Account::encrypting_info(username) << endl;
     new_account << "Password: " << Account::encrypting_info(password) << endl;
@@ -64,7 +62,7 @@ void create_account(Account &_users){
     new_account.close();
 }
 
-void login(Account &_users){
+void login(Account &_users, const string &filepath){
     string check_pass, check_role_input;
     string username, password, search_role;
 
@@ -73,9 +71,9 @@ void login(Account &_users){
     cout << "Enter password: ";
     cin >>check_pass;
 
-    const string filepath = "/Users/aaronher/CLionProjects/Github_Projects/my_cpp_projects/Library_Project//Accounts/Users/user_files/" + username;
 
-    ifstream load_account(filepath, ios::binary); // opening file for input
+
+    ifstream load_account((filepath + username), ios::binary); // opening file for input
 
 
     // Checking if file opened
@@ -136,6 +134,9 @@ void login(Account &_users){
 int main() {
 
     int user_option;
+    const string filepath = "/Users/aaronher/CLionProjects/Github_Projects/my_cpp_projects/Library_Project//Accounts/Users/user_files/";
+
+
     Account _rootUser_Account;
     cout << "1. login" << endl
          << "2. Create Account" << endl
@@ -144,11 +145,10 @@ int main() {
 
     switch(user_option){
         case 1:
-            // login(_rootUser_Account);
-            login(_rootUser_Account);
+            login(_rootUser_Account, filepath);
             break;
         case 2:
-            create_account(_rootUser_Account);
+            create_account(_rootUser_Account, filepath);
             break;
         default:
             cout << "Invalid input!" << endl;
