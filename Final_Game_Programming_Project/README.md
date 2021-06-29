@@ -19,7 +19,7 @@
     * Character functionality to use their role unique abilities
     * Changing to different roles, for different fights
 
-** Future Features In Progress**
+** Future Features Soon In Progress**
 - Able to transition and use abilities related to the given role
 - Able to keep track of scoreboard of wins and losses from each match
 - Available to keep track of how many characters are created in their account
@@ -27,4 +27,8 @@
 - Using the Factory Design Pattern to implement players functionalities
 - In progress is creating a filesystem to handle current directory depending on users operating system
 - Debugging and refactoring for reusability
+
+**NOTE**
+- There are other features that will be added later on.
+- New features presented here will soon be in progress, once the earlier features that are currently being worked on are successfully done.
 
